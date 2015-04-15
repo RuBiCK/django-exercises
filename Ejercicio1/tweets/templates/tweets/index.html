@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block title %}Django Tweets{% endblock %}
+{% block content%}
+{% if latest_tweet_list %}
+{% for tweet in latest_tweet_list %}
+    <div class="row">
+        <div class="col-xs-5">
+            <h3>
+                <a href="{% url 'tweet_detail' tweet.id %}">{{ tweet.tweet_text }}</a>
+                <span class="small"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="{% url 'user_tweets' tweet.user.nick %}">{{tweet.user.nick}}</a></span>
+
+            </h3>
+        </div>
+    </div>
+{% endfor %}
+{% else %}
+    <p>No hay tweets en nuestro timeline</p>
+{% endif %}
+{% endblock %}
+

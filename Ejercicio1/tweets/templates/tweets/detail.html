@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bootstrap3%}
+{% block content %}
+    <div class="row">
+    <div class="col-xs-8">
+    <div class="jumbotron">
+    <h1>{{ tweet.tweet_text }}</h1>
+    <p>
+    por <a href="{% url 'user_tweets' tweet.user.nick %}">{{ tweet.user.nick}}</a>
+    el {{ tweet.pub_date }}
+    </p>
+    </div>
+    </div>
+    </div>
+{% endblock %}
+
