@@ -4,6 +4,8 @@ from django.db import models
 class User(models.Model):
     nick = models.CharField(max_length=20)
     join_date = models.DateTimeField('date created')
+    email = models.EmailField(max_length=30,null=True)
+    password = models.CharField(max_length=20,null=True,blank=False)
 
 class Tag(models.Model):
     titulo = models.CharField(max_length=50)
