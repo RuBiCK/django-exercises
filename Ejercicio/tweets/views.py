@@ -2,10 +2,13 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from tweets.models import Tweet
 from django.http import Http404
 from forms import RegisterForm
+from tweets.models import User
+from datetime import datetime
 
 def index(request):
     latest_tweet_list = Tweet.objects.order_by('-pub_date')[:5]
@@ -31,8 +34,17 @@ def register (request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
+            new_user = User()
+            new_user.nick = cd['nick']
+            new_user.email = cd['email']
+            new_user.join_date = datetime.now()
+            new_user.password = cd['password']
+            new_user.save()
             #TO-DO Genera el User a partir de los datos de cd
-            return HttpResponseRedirect('/registro/welcome')
+            return HttpResponseRedirect('/tweets/registro/welcome')
     else:
         form = RegisterForm()
     return render(request, 'registro.html', {'form': form})
+
+def welcome(request):
+    return HttpResponse('Welcome')
