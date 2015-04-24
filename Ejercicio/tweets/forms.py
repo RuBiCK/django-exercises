@@ -1,4 +1,6 @@
 from django import forms
+from tweets.models import User
+
 class RegisterForm(forms.Form):
     nick = forms.CharField(max_length=20,label='Nick')
     email = forms.EmailField(required=True, label='E-mail')
@@ -15,3 +17,11 @@ class RegisterForm(forms.Form):
         if password1 != password2:
             raise forms.ValidationError("Los passwords deben coincidir.")
         return cleaned_data
+
+    def clean_nick(self):
+        cleaned_data = self.cleaned_data
+        nickform = cleaned_data.get("nick")
+        if User.objects.filter(nick=nickform):
+            raise forms.ValidationError("El usuario existen")
+        return cleaned_data
+

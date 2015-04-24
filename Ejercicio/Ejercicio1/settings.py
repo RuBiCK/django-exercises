@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'tweets',
     'bootstrap3',
+    'bootstrapform',
     'Noticias'
 )
 

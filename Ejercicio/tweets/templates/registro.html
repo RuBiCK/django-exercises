@@ -1,8 +1,5 @@
-<html>
-    <head>
-        <title>Registro</title>
-    </head>
-    <body>
+{% extends "base.html" %}
+{% block content %}
         <h1>Registro</h1>
         {% if form.errors %}
             <p style="color: red;">
@@ -16,5 +13,4 @@
                 {% csrf_token %}
             <input type="submit" value="Submit">
         </form>
-    </body>
-</html>
+{% endblock %}

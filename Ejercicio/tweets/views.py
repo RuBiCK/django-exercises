@@ -10,6 +10,7 @@ from forms import RegisterForm
 from tweets.models import User
 from datetime import datetime
 
+
 def index(request):
     latest_tweet_list = Tweet.objects.order_by('-pub_date')[:5]
     context = {'latest_tweet_list': latest_tweet_list}
@@ -26,10 +27,7 @@ def tweet_detail(request, tweet_id):
     context = {'tweet': tweet}
     return render(request, "tweets/detail.html", context)
 
-
-
-
-def register (request):
+def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
