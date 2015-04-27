@@ -38,11 +38,10 @@ def register(request):
             new_user.join_date = datetime.now()
             new_user.password = cd['password']
             new_user.save()
-            #TO-DO Genera el User a partir de los datos de cd
             return HttpResponseRedirect('/tweets/registro/welcome')
     else:
         form = RegisterForm()
     return render(request, 'registro.html', {'form': form})
 
 def welcome(request):
-    return HttpResponse('Welcome')
+    return HttpResponse('<p class="bg-success">Usuario registrado.Bienvenido!</p>')
