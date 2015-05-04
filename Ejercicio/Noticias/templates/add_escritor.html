@@ -1,0 +1,20 @@
+<html>
+        <head>
+             <title>Nuevo escritor</title>
+        </head>
+    <body>
+        <h1>Nuevo Escritor</h1>
+        {% if form.errors %}
+            <p style="color: red;">
+            Existe algún error en el formulario
+            </p>
+        {% endif %}
+        <form action="" method="post">
+            <table>
+                {{ form.as_table }}
+            </table>
+                {% csrf_token %}
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
