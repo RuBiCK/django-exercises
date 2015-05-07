@@ -1,0 +1,10 @@
+<html>
+<body>
+    <h2>Escritores</h2>
+<ul>
+    {% for escritor in object_list %}
+<li>{{ escritor.nombre_completo }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
