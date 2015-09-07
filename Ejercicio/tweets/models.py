@@ -6,7 +6,7 @@ class User(models.Model):
     join_date = models.DateTimeField('date created')
     email = models.EmailField(max_length=30,null=True)
     password = models.CharField(max_length=20,null=True,blank=False)
-    error a mano #remove this line, just for testing purposes
+    error a mano #remove this line, just for testing purposes. please remove
     
 class Tag(models.Model):
     titulo = models.CharField(max_length=50)
